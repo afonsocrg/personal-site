@@ -1,28 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import VolunteeringExperience from './Volunteering/VolunteeringExperience';
 
-import Job from './Experience/Job';
-
-const Experience = ({ data }) => (
+const Volunteering = ({ data }) => (
   <div className="experience">
-    <div className="link-to" id="experience" />
+    <div className="link-to" id="volunteering" />
     <div className="title">
-      <h3>Experience</h3>
+      <h3>Volunteering</h3>
     </div>
-    {data.map((job) => (
-      <div key={`${job.name}-${job.position}`}>
-        <Job
-          data={job}
-        />
+    {data.map((volExp) => (
+      <div key={`${volExp.organization}-${volExp.position}`}>
+        <VolunteeringExperience data={volExp} />
         <br />
       </div>
     ))}
   </div>
 );
 
-Experience.propTypes = {
+Volunteering.propTypes = {
   data: PropTypes.arrayOf(PropTypes.exact({
-    name: PropTypes.string,
+    organization: PropTypes.string,
     position: PropTypes.string,
     url: PropTypes.string,
     startDate: PropTypes.string,
@@ -32,8 +29,8 @@ Experience.propTypes = {
   })),
 };
 
-Experience.defaultProps = {
+Volunteering.defaultProps = {
   data: [],
 };
 
-export default Experience;
+export default Volunteering;
